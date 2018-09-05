@@ -245,7 +245,7 @@ public class MainActivity extends AppCompatActivity
 						dcsView.getBuffer().delete(0);
 					}
 					int[] array = {0};
-					dcsView.getIO().save(array, "/sdcard/Android/data/com.dynamsoft.online.docscannerx/files/Pictures/"+ pdfName + ".pdf", new DcsPDFEncodeParameter()); //<-Save as a PDF
+					dcsView.getIO().save(array,  getExternalFilesDir(Environment.DIRECTORY_PICTURES).getPath()+ "/"+pdfName + ".pdf", new DcsPDFEncodeParameter()); //<-Save as a PDF
 					camThumb.setImageBitmap(image.getImage());
 					badgeView.setBadgeNumber(++photoCount);
 					dcsView.getVideoView().setShowCancelToolItem(false);
