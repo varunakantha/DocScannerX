@@ -16,6 +16,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -64,7 +65,11 @@ import com.nispok.snackbar.Snackbar;
 import com.nispok.snackbar.SnackbarManager;
 import com.nispok.snackbar.listeners.ActionClickListener;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -72,6 +77,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -125,6 +131,8 @@ public class MainActivity extends AppCompatActivity
 	private int photoCount = 0;
 	private int snackBarTop = 0;
 	private MaterialDialog progressDialog;
+	String mCurrentPhotoPath;
+	Uri imageURI;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -231,6 +239,7 @@ public class MainActivity extends AppCompatActivity
 					if (camThumb.getVisibility() != View.VISIBLE) {
 						camThumb.setVisibility(View.VISIBLE);
 					}
+					savePicture(image.getImage());
 					camThumb.setImageBitmap(image.getImage());
 					badgeView.setBadgeNumber(++photoCount);
 					dcsView.getVideoView().setShowCancelToolItem(false);
@@ -1246,5 +1255,50 @@ public class MainActivity extends AppCompatActivity
 		DcsView.setLicense(getApplicationContext(), "Your license number");
 	}
 
+	private File createImageFile(Bitmap documentImage) throws IOException {
+
+		// Create an image file name
+		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+		String imageFileName = "JPEG_" + timeStamp + "_TEST_";
+		File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+		File image = File.createTempFile(
+				imageFileName,  /* prefix */
+				".jpg",         /* suffix */
+				storageDir      /* directory */
+		);
+
+		// Convert bitmap to Image
+		mCurrentPhotoPath = image.getAbsolutePath();
+		File file = new File(mCurrentPhotoPath);
+		OutputStream os = new BufferedOutputStream(new FileOutputStream(file));
+		documentImage.compress(Bitmap.CompressFormat.JPEG, 100, os);
+		os.close();
+       /* pdfName = file.getName();
+        new ProcessDocumentTask(imageURI).execute(documentImage);*/
+
+		return image;
+	}
+
+	private void savePicture(Bitmap documentImage) {
+
+		// Create the File where the photo should go
+		File photoFile = null;
+
+		try {
+			photoFile = createImageFile(documentImage);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		// Continue only if the File was successfully created
+		if (photoFile != null) {
+			imageURI = FileProvider.getUriForFile(this,
+					"com.dynamsoft.online.docscannerx",
+					photoFile);
+
+
+		}
+
+	}
 
 }
