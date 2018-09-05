@@ -240,9 +240,12 @@ public class MainActivity extends AppCompatActivity
 					if (camThumb.getVisibility() != View.VISIBLE) {
 						camThumb.setVisibility(View.VISIBLE);
 					}
-					savePicture(image.getImage()); //<-Path the code
+					savePicture(image.getImage()); //<-Save Image
+					if(dcsView.getBuffer().getCurrentIndex()>0){ //<-Delete previous Image
+						dcsView.getBuffer().delete(0);
+					}
 					int[] array = {0};
-					dcsView.getIO().save(array, "/sdcard/Android/data/com.dynamsoft.online.docscannerx/files/Pictures/"+ pdfName + ".pdf", new DcsPDFEncodeParameter());
+					dcsView.getIO().save(array, "/sdcard/Android/data/com.dynamsoft.online.docscannerx/files/Pictures/"+ pdfName + ".pdf", new DcsPDFEncodeParameter()); //<-Save as a PDF
 					camThumb.setImageBitmap(image.getImage());
 					badgeView.setBadgeNumber(++photoCount);
 					dcsView.getVideoView().setShowCancelToolItem(false);
