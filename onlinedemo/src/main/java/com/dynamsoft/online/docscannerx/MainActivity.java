@@ -133,8 +133,9 @@ public class MainActivity extends AppCompatActivity
 	private MaterialDialog progressDialog;
 	String mCurrentPhotoPath;
 	Uri imageURI;
+    private String pdfName="";
 
-	@Override
+    @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
@@ -241,7 +242,7 @@ public class MainActivity extends AppCompatActivity
 					}
 					savePicture(image.getImage()); //<-Path the code
 					int[] array = {0};
-					dcsView.getIO().save(array, "/sdcard/Android/data/com.dynamsoft.online.docscannerx/files/Pictures/data" + ".pdf", new DcsPDFEncodeParameter());
+					dcsView.getIO().save(array, "/sdcard/Android/data/com.dynamsoft.online.docscannerx/files/Pictures/"+ pdfName + ".pdf", new DcsPDFEncodeParameter());
 					camThumb.setImageBitmap(image.getImage());
 					badgeView.setBadgeNumber(++photoCount);
 					dcsView.getVideoView().setShowCancelToolItem(false);
@@ -1275,8 +1276,7 @@ public class MainActivity extends AppCompatActivity
 		OutputStream os = new BufferedOutputStream(new FileOutputStream(file));
 		documentImage.compress(Bitmap.CompressFormat.JPEG, 100, os);
 		os.close();
-       /* pdfName = file.getName();
-        new ProcessDocumentTask(imageURI).execute(documentImage);*/
+        pdfName = file.getName();
 
 		return image;
 	}
