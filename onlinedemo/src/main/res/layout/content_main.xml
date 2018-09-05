@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/parentView"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.dynamsoft.online.docscannerx.MainActivity"
+                tools:showIn="@layout/app_bar_main"
+                xmlns:tool="http://schemas.android.com/apk/res-auto">
+
+	<LinearLayout
+		android:id="@+id/emptyview"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:gravity="center"
+		android:orientation="vertical"
+		android:visibility="gone"
+		tools:visibility="visible">
+
+		<ImageView
+			android:layout_width="117dp"
+			android:layout_height="165dp"
+			android:background="@drawable/icn_doc"/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="20dp"
+			android:text="No images yet"/>
+	</LinearLayout>
+
+	<com.dynamsoft.camerasdk.view.DcsView
+		android:id="@+id/dcsview_id"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_above="@+id/bottom_menu"
+		/>
+
+	<android.support.v7.widget.RecyclerView
+		android:id="@+id/rl_savelist"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="#ffffff"
+		android:visibility="gone"/>
+
+	<ImageView
+		android:id="@+id/iv_thumb"
+		android:layout_width="52dp"
+		android:layout_height="52dp"
+		android:layout_alignParentBottom="true"
+		android:layout_marginBottom="17dp"
+		android:layout_marginLeft="28dp"
+		android:padding="5dp"
+		android:scaleType="fitXY"
+		android:visibility="gone"
+		/>
+
+	<ImageView
+		android:id="@+id/iv_tick"
+		android:layout_width="24dp"
+		android:layout_height="24dp"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentRight="true"
+		android:layout_marginBottom="30dp"
+		android:layout_marginRight="28dp"
+		android:src="@mipmap/icn_tick"
+		android:visibility="gone"
+		/>
+
+	<LinearLayout
+		android:id="@+id/bottom_menu"
+		android:layout_width="match_parent"
+		android:layout_height="55dp"
+		android:layout_alignParentBottom="true"
+		android:background="#26272b"
+		android:baselineAligned="false"
+		android:orientation="horizontal"
+		android:visibility="gone"
+		tools:visibility="visible">
+
+		<LinearLayout
+			android:id="@+id/ll_share"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:gravity="center"
+			android:orientation="vertical">
+
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@mipmap/icn_share"/>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Share"
+				android:textColor="#ffffff"
+				/>
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/ll_trash"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:gravity="center"
+			android:orientation="vertical">
+
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@mipmap/icn_trash"/>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Trash"
+				android:textColor="#ffffff"
+				/>
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/ll_upload"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:gravity="center"
+			android:orientation="vertical">
+
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@mipmap/icn_upload"/>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Upload"
+				android:textColor="#ffffff"
+				/>
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/ll_save"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:gravity="center"
+			android:orientation="vertical">
+
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@mipmap/icn_save"/>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Save"
+				android:textColor="#ffffff"
+				/>
+		</LinearLayout>
+
+	</LinearLayout>
+
+	<WebView
+		android:id="@+id/wv_upload_list"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:visibility="gone"/>
+
+	<WebView
+		android:id="@+id/wv_center_id"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:visibility="gone"/>
+</RelativeLayout>

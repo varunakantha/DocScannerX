@@ -1,0 +1,15 @@
+<resources>
+	<string name="app_name">Doc-Scanner-X</string>
+
+	<string name="navigation_drawer_open">Open navigation drawer</string>
+	<string name="navigation_drawer_close">Close navigation drawer</string>
+
+	<string name="action_settings">Settings</string>
+	<string name="view_home">Home</string>
+	<string name="saved_files">Saved Files</string>
+	<string name="uploaded_files">Uploaded Files</string>
+	<string name="developer_center">Developer Center</string>
+	<string name="view_sort">Sort</string>
+	<string name="view_select">Selected</string>
+	<string name="action_select_all">Select All</string>
+</resources>

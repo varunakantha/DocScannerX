@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="action_select_all" type="id"/>
+    <item name="action_edit" type="id" />
+    <item name="action_trash" type="id" />
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/DocScannerX.iml" filepath="$PROJECT_DIR$/DocScannerX.iml" />
+      <module fileurl="file://$PROJECT_DIR$/onlinedemo/onlinedemo.iml" filepath="$PROJECT_DIR$/onlinedemo/onlinedemo.iml" />
+    </modules>
+  </component>
+</project>
